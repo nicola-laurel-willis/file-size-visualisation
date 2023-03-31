@@ -1,0 +1,13 @@
+#grid-main {
+  width: 500px;
+  height: 500px;
+  /* border: #ddd 1px solid; */
+  position: absolute
+}
+
+#grid-square {
+  border: 1px solid black;
+  /* border-right: 0px;
+  border-bottom: 0px; */
+  position: absolute
+}
