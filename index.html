@@ -12,10 +12,32 @@
 </head>
 
 <body>
-  <h2>Image Size Project</h2>
+  <h2>File Size Visualisation Project</h2>
   <!-- <div id="drawing"></div> -->
 
-  <div id="visualised"></div>
+  <!-- <label for="file-size">File size:</label>
+  <input type="number" id="file-size" name="file-size" min="1" max="10000"> -->
+
+
+  <fieldset>
+    <legend>File Size</legend>
+    <label for="size-value">Value</label>
+    <input type="number" id="size-value" name="size-value" />
+  
+    <label for="size-unit">Unit</label>
+    <select name="units" id="size-unit">
+      <option value="">--Please choose an option--</option>
+      <option value="kb">kb</option>
+      <option value="mb">mb</option>
+      <option value="gb">gb</option>
+    </select>
+
+    <button type="button" id="visualise-button">Visualise size</button>
+
+  </fieldset>
+  <div id="visualised-container">
+    <div id="visualised"></div>
+  </div>
 </body>
 
 </html>
