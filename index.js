@@ -22,6 +22,30 @@ const unitInputElement = document.getElementById("unit")
 
 const visualiseButton = document.getElementById("visualise-button")
 
+// window.onload = (event) => {
+//   const test = document.getElementById('planets')
+//   console.log("planets SVG element", test)
+// }
+
+console.log("HELLO?")
+
+const planets = document.getElementById('planets')
+console.log("planets SVG element", planets)
+
+planets.addEventListener('load', () => {
+    // Will get called after embed element was loaded
+    console.log('did it load?')
+    window.svgPanZoom(planets, {
+      controlIconsEnabled: true,
+      panEnabled: false
+    })
+  })
+
+
+//const panZoomPlanets = svgPanZoom(planetsSvgElement);
+
+console.log("Window object", window)
+
 visualiseButton.addEventListener("click", () => {
 
   const numericalSize = numericalSizeInputElement.value

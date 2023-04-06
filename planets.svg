@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="700" height="700" viewBox="0 0 700 700" xml:space="preserve" id="planets">
+<desc>Created with Fabric.js 4.6.0</desc>
+<defs>
+</defs>
+<g transform="matrix(1 0 0 1 274.96 437.35)" id="RCXQ1rppW5YfkJrMgN-QM"  >
+<path style="stroke: rgb(207,205,178); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(16,87,195); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-129.17, -129.17)" d="M 129.17399 0 C 200.47803 0 258.34798 57.86995 258.34798 129.17399 C 258.34798 200.47803 200.47803 258.34798 129.17399 258.34798 C 57.86995 258.34798 0 200.47803 0 129.17399 C 0 57.86995 57.86995 0 129.17399 0 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(0.73 0 0 0.73 476.01 177.56)" id="pDqNI1SoDFTQbCrWCfDoq"  >
+<path style="stroke: rgb(207,205,178); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(125,16,195); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M 0 -129.17399 C 71.30404 -129.17399 129.17399 -71.30404 129.17399 0 C 129.17399 71.30404 71.30404 129.17399 0 129.17399 C -71.30404 129.17399 -129.17399 71.30404 -129.17399 0 C -129.17399 -71.30404 -71.30404 -129.17399 0 -129.17399 z" stroke-linecap="round" />
+</g>
+</svg>
