@@ -35,10 +35,16 @@ console.log("planets SVG element", planets)
 planets.addEventListener('load', () => {
     // Will get called after embed element was loaded
     console.log('did it load?')
-    window.svgPanZoom(planets, {
-      controlIconsEnabled: true,
+    const zoomablePlanets = window.svgPanZoom(planets, {
+      //controlIconsEnabled: true,
       panEnabled: false
     })
+
+    const zoomInButton = document.getElementById("zoom-in")
+    zoomInButton.addEventListener("click", () => {
+      zoomablePlanets.zoomIn()
+    })
+    
   })
 
 
