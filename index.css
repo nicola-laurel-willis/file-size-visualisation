@@ -3,9 +3,8 @@
   width: 0.5px;
   height: 0.5px;
   position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
 }
 #visualised-container {
   width: 100%;

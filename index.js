@@ -1,41 +1,42 @@
+// utility functions
+const getMultiplicationAmount = unit => {
+  if(unit === "kb"){
+    return 0
+  }
+  if(unit === "mb"){
+    return 1000
+  }
+  if(unit === "gb"){
+    return 1000000
+  }
+}
+//------------------------------------
 
-const windowWidth = window.innerWidth
-const windowHeight = window.innerHeight
+// const windowWidth = window.innerWidth
+// const windowHeight = window.innerHeight
+// console.log("windowWidth", windowWidth)
+// console.log("windowHeight", windowHeight)
 
-console.log("windowWidth", windowWidth)
-console.log("windowHeight", windowHeight)
-
-
-
-// on clicking #visualise-button, get the value of #value and #unit
-
-const sizeValue = document.getElementById("size-value")
-const sizeUnit = document.getElementById("size-unit")
-
+const numericalSizeInputElement = document.getElementById("numerical-size")
+const unitInputElement = document.getElementById("unit")
 
 const visualiseButton = document.getElementById("visualise-button")
+
 visualiseButton.addEventListener("click", () => {
-  console.log("sizeValue", sizeValue.value)
-  console.log("sizeUnit", sizeUnit.value)
 
-  const sizeValue2 = sizeValue.value
-  const sizeUnit2 = sizeUnit.value
+  const numericalSize = numericalSizeInputElement.value
+  const unit = unitInputElement.value
+  console.log("numerical size: ", numericalSize, "unit: ", unit)
 
-  let ultimateValue
-  if(sizeUnit2 === "kb"){
-    ultimateValue = sizeValue2
-  }
-  if(sizeUnit2 === "mb"){
-    ultimateValue = sizeValue2*1000
-  }
-  if(sizeUnit2 === "gb"){
-    ultimateValue = sizeValue2*1000000
-  }
+  const multiplicationAmount = getMultiplicationAmount(unit)
 
-  console.log("ultimateValue", `${ultimateValue}kb`)
+  const sizeInKilobytes = numericalSize * multiplicationAmount
 
-  if(ultimateValue <= 1000000){
-    const pixelVersionSquare = ultimateValue/2
+
+  console.log("sizeInKilobytes", `${sizeInKilobytes}kb`)
+
+  if(sizeInKilobytes <= 1000000){
+    const pixelVersionSquare = sizeInKilobytes/2
     const squareSide = Math.sqrt(pixelVersionSquare)
   
     const visualised = document.getElementById("visualised")
