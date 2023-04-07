@@ -41,6 +41,8 @@ planets.addEventListener('load', () => {
     })
 
     const zoomInButton = document.getElementById("zoom-in")
+    //accessibility? onclick?
+    //https://www.w3.org/WAI/WCAG21/Techniques/client-side-script/SCR35
     zoomInButton.addEventListener("click", () => {
       zoomablePlanets.zoomIn()
     })
