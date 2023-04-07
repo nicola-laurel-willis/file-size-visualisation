@@ -18,6 +18,7 @@ const getMultiplicationAmount = unit => {
 // console.log("windowHeight", windowHeight)
 
 //testing out a commit 
+//another test
 
 const numericalSizeInputElement = document.getElementById("numerical-size")
 const unitInputElement = document.getElementById("unit")
