@@ -1,43 +1,58 @@
+const zoomStepValue = 50
+const basicSvgDimension = 600
 
 const getCurrentViewBoxDimension = element => {
   const viewBox = element.getAttribute("viewBox")
-  const heightString = viewBox.substring(8)
-  console.log("heightString", heightString)
-  const currentDimension = parseInt(heightString)
-  return currentDimension
+  const dimensionString = viewBox.substring(8)
+  return parseInt(dimensionString)
 }
 
+const getSvgElement = (svgObjectId, svgElementId) => {
+  const svgDocument = document.getElementById(svgObjectId).contentDocument
+  const svgElement = svgDocument.getElementById(svgElementId)
+  return svgElement
+}
+
+//viewBox width and height dimensions say how many units the viewport should contain. If I say the viewport should contain 300 units, and my svg has 600 units, this means that 300 of the svg's units will fit into the viewport and another 300 will be invisible outside the viewport. Therefore, in order to "zoom in", we decrease the width and height dimensions in the viewBox property, aka we are saying that less of the svg is to fit into the viewport. On the other hand, if we want to "zoom out", aka have more of the svg's units fit into the viewport, we should increase the dimensions in viewBox, which is saying that we want more units to fit into the viewport.
+const increaseViewBoxDimension = currentViewBoxDimension => currentViewBoxDimension + zoomStepValue
+const decreaseViewBoxDimension = currentViewBoxDimension => currentViewBoxDimension - zoomStepValue
+
+const zoom = getNewDimension => svgElement => {
+  const currentViewBoxDimension = getCurrentViewBoxDimension(svgElement)
+  const newDimension = getNewDimension(currentViewBoxDimension)
+  if(newDimension < 0){
+    svgElement.setAttribute("viewBox", "0 0 1 1")
+  }
+  if(newDimension > 0){
+    svgElement.setAttribute("viewBox", `0 0 ${newDimension} ${newDimension}`)
+  }
+  if(newDimension > basicSvgDimension){
+    svgElement.setAttribute("viewBox", `0 0 ${basicSvgDimension} ${basicSvgDimension}`)
+  }
+}
+const zoomIn = zoom(decreaseViewBoxDimension)
+const zoomOut = zoom(increaseViewBoxDimension)
+
+
 window.addEventListener("load", () => {
-  const starsSvgObject = document.getElementById("stars-svg-object").contentDocument
-  console.log("starsSvgObject", starsSvgObject)
-  const starsSvgElement = starsSvgObject.getElementById("stars-svg-element")
-  console.log("the svg element", starsSvgElement);
-
-  
-
+  const starsSvgElement = getSvgElement("stars-svg-object", "stars-svg-element")
   const zoomInButton = document.getElementById("zoom-in")
-  zoomInButton.addEventListener("click", () => {
-    const currentDimension = getCurrentViewBoxDimension(starsSvgElement)
-    const newDimension = currentDimension - 50 
-    starsSvgElement.setAttribute("viewBox", `0 0 ${newDimension} ${newDimension}`)
-  })
-
+  const resetButton = document.getElementById("reset")
   const zoomOutButton = document.getElementById("zoom-out")
-  zoomOutButton.addEventListener("click", () => {
-    const currentDimension = getCurrentViewBoxDimension(starsSvgElement)
-    const newDimension = currentDimension + 50
-    starsSvgElement.setAttribute("viewBox", `0 0 ${newDimension} ${newDimension}`)
+
+  zoomInButton.addEventListener("click", () => {
+    zoomIn(starsSvgElement)
   })
   
+  zoomOutButton.addEventListener("click", () => {
+    zoomOut(starsSvgElement)
+  })
 
-});
+  resetButton.addEventListener("click", () => {
+    starsSvgElement.setAttribute("viewBox", `0 0 ${basicSvgDimension} ${basicSvgDimension}`)
+  })
 
-// const starsSvgElement = document.getElementById("stars-svg-element")
-// starsSvgElement.addEventListener('load', () => {
-//   console.log("starsSvgElement loaded", starsSvgElement)
-// })
-
-
+})
 
 
 
