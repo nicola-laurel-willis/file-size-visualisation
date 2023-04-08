@@ -14,48 +14,11 @@ const getMultiplicationAmount = unit => {
 
 // const windowWidth = window.innerWidth
 // const windowHeight = window.innerHeight
-// console.log("windowWidth", windowWidth)
-// console.log("windowHeight", windowHeight)
-
-//testing out a commit 
-//another test
 
 const numericalSizeInputElement = document.getElementById("numerical-size")
 const unitInputElement = document.getElementById("unit")
 
 const visualiseButton = document.getElementById("visualise-button")
-
-// window.onload = (event) => {
-//   const test = document.getElementById('planets')
-//   console.log("planets SVG element", test)
-// }
-
-console.log("HELLO?")
-
-const planets = document.getElementById('planets')
-console.log("planets SVG element", planets)
-
-planets.addEventListener('load', () => {
-    // Will get called after embed element was loaded
-    console.log('did it load?')
-    const zoomablePlanets = window.svgPanZoom(planets, {
-      //controlIconsEnabled: true,
-      panEnabled: false
-    })
-
-    const zoomInButton = document.getElementById("zoom-in")
-    //accessibility? onclick?
-    //https://www.w3.org/WAI/WCAG21/Techniques/client-side-script/SCR35
-    zoomInButton.addEventListener("click", () => {
-      zoomablePlanets.zoomIn()
-    })
-    
-  })
-
-
-//const panZoomPlanets = svgPanZoom(planetsSvgElement);
-
-console.log("Window object", window)
 
 visualiseButton.addEventListener("click", () => {
 
