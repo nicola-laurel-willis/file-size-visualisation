@@ -1,47 +1,29 @@
-// utility functions
-const getMultiplicationAmount = unit => {
-  if(unit === "kb"){
-    return 0
-  }
-  if(unit === "mb"){
-    return 1000
-  }
-  if(unit === "gb"){
-    return 1000000
-  }
-}
-//------------------------------------
 
-// const windowWidth = window.innerWidth
-// const windowHeight = window.innerHeight
+window.addEventListener("load", () => {
+  const starsSvgObject = document.getElementById("stars-svg-object").contentDocument
+  console.log("starsSvgObject", starsSvgObject)
+  const starsSvgElement = starsSvgObject.getElementById("stars-svg-element")
+  console.log("the svg element", starsSvgElement);
 
-const numericalSizeInputElement = document.getElementById("numerical-size")
-const unitInputElement = document.getElementById("unit")
-
-const visualiseButton = document.getElementById("visualise-button")
-
-visualiseButton.addEventListener("click", () => {
-
-  const numericalSize = numericalSizeInputElement.value
-  const unit = unitInputElement.value
-  console.log("numerical size: ", numericalSize, "unit: ", unit)
-
-  const multiplicationAmount = getMultiplicationAmount(unit)
-
-  const sizeInKilobytes = numericalSize * multiplicationAmount
-
-
-  console.log("sizeInKilobytes", `${sizeInKilobytes}kb`)
-
-  if(sizeInKilobytes <= 1000000){
-    const pixelVersionSquare = sizeInKilobytes/2
-    const squareSide = Math.sqrt(pixelVersionSquare)
+  const zoomInButton = document.getElementById("zoom-in")
+  zoomInButton.addEventListener("click", () => {
+    console.log("clicked zoom in button")    
+    starsSvgElement.setAttribute("viewBox", "0 0 300 300")
+  })
   
-    const visualised = document.getElementById("visualised")
-    visualised.setAttribute("style", `width: ${squareSide}px; height: ${squareSide}px`)
-  }
-  else {
-    console.log("ERROR: too big")
-  }
 
-})
+});
+
+// const starsSvgElement = document.getElementById("stars-svg-element")
+// starsSvgElement.addEventListener('load', () => {
+//   console.log("starsSvgElement loaded", starsSvgElement)
+// })
+
+
+
+
+
+
+
+
+
