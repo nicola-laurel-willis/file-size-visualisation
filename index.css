@@ -7,8 +7,8 @@
   /* transform: translate(-50%, -50%); */
 }
 #visualised-container {
-  width: 100%;
-  height: 1000px;
+  width: 600px;
+  height: 500px;
   border: 1px solid black
 }
 
