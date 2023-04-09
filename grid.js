@@ -20,10 +20,7 @@ const generateGrid = () => {
   console.log("coordinates", coordinates)
 
   const gridSquareEdgeLength = 500/values.length
-  console.log('gridSquareEdgeLength', gridSquareEdgeLength)
   const gridMain = document.body.querySelector("#grid-main")
-
-
 
   coordinates.map(({row, col}, index) => {
 
@@ -66,10 +63,4 @@ const generateGrid = () => {
 }
 
 
-const createCoordinates = () => {
-  return {
-    y: value,
-    x: value
-  }
-}
 window.onload = generateGrid

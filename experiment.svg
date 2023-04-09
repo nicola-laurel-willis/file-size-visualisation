@@ -9,9 +9,7 @@
 
 <?xml version="1.0" standalone="no"?> -->
 
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 1 1" id="experiment-svg-element">
-
-  
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 10 10" id="experiment-svg-element">
 
   <rect x="0" y="0" width="1000000" height="1000000" stroke="black" fill="yellow" stroke-width="0.5"/>
   <rect x="0" y="0" width="1000" height="1000" stroke="black" fill="pink" stroke-width="0"/>
