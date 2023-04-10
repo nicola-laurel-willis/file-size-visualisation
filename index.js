@@ -11,6 +11,16 @@ const gridSquareEdgeLength = gridSize/gridRoot
 <rect x="0" y="0" width="1000" height="1000" stroke="black" fill="pink" stroke-width="0"/>
 <rect x="0" y="0" width="1" height="1" stroke="black" fill="blue" stroke-width="0.02"/> */}
 
+// var draw = SVG().addTo('body').size(500, 130)
+
+// var pattern = draw.pattern(20, 20, function(add) {
+// /*   add.rect(20,20).fill('#f06')
+//   add.rect(10,10).fill('#0f9')
+//   add.rect(10,10).move(10,10).fill('#fff') */
+//   add.rect(20,20).fill('#fff').stroke({ color: "black", width: 0.2} )
+// })
+
+// draw.rect(100, 100).move(20, 20).fill(pattern)
 
 const mySVG = SVG()
 .addTo('#my-svg')
@@ -34,6 +44,15 @@ mySVG
 .fill("rgba(245, 40, 145, 0.5)")
 
 // const mySVGFromDOM = 
+
+
+
+const gridPattern = mySVG
+.pattern(0.001, 0.001, add => {
+  add.rect(0.001,0.001).fill('#fff').stroke({ color: "black", width: 0.0001})
+})
+
+mySVG.rect(100,100).fill(gridPattern)
 
 
 const squareLength = 0.01/10
@@ -77,7 +96,7 @@ const generateGrid = () => {
   })
 
   positions.forEach(({rowPosition, colPosition}) => {
-    createSvgGridSquare(rowPosition, colPosition)
+    // createSvgGridSquare(rowPosition, colPosition)
   })
 }
 
