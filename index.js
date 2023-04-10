@@ -1,10 +1,21 @@
-import { zoomIn, zoomOut } from "./zoom.js"
+import { zoomIn, zoomOut, getCurrentViewBoxDimension } from "./zoom.js"
 import { getEmbeddedSvgElement } from "./utilities.js"
 import { SVG, extend as SVGextend, Element as SVGElement } from '@svgdotjs/svg.js'
 
 
+import { React } from 'react'
+import { createRoot } from 'react-dom/client';
+
+// Clear the existing HTML content
+document.body.innerHTML = '<div id="app"></div>';
+
+// Render your React component instead
+const root = createRoot(document.getElementById('app'));
+console.log("root", root)
+root.render(<h1>Hello, world</h1>);
+
 const initialViewBoxDimension = 32000
-const zoomStepValue = 1000
+//const zoomStepValue = 1000
 
 const gridRoot = 4
 const gridSize = 400
@@ -99,27 +110,51 @@ mySVG.rect(31623, 31623).fill(gridPattern3)
 
 
 
+//if svg viewbox values are 
+//so my basic zoom step value is currently 1000
 
 
 
+//I want to work out the current viewBox dimension in order to decide the zoom step value
+//In the zoom function, I work out the current viewBox dimension in order to set the new viewBox dimension
+
+
+const testFunction = () => {
+  return (
+    <div>
+      hi
+    </div>
+  )
+}
 
 // ********Zoom SVG********
 window.addEventListener("load", () => {
-  //const experimentSvgElement = getSvgElement("experiment-svg-object", "experiment-svg-element")
+  testFunction()
   const mySvgElement = document.getElementById("my-svg-container").firstChild
+
   const zoomInButton = document.getElementById("zoom-in")
   const resetButton = document.getElementById("reset")
   const zoomOutButton = document.getElementById("zoom-out")
 
-  console.log("my svg", mySvgElement)
 
   zoomInButton.addEventListener("click", () => {
     console.log("zoom in button clicked")
+
+    const currentViewBoxDimension = getCurrentViewBoxDimension(mySvgElement)
+    
+    const zoomStepValue = currentViewBoxDimension/12
+  
     zoomIn(mySvgElement, zoomStepValue, initialViewBoxDimension)
   })
   
   zoomOutButton.addEventListener("click", () => {
     console.log("zoom out button clicked")
+
+    const currentViewBoxDimension = getCurrentViewBoxDimension(mySvgElement)
+    
+    const zoomStepValue = currentViewBoxDimension/12
+
+
     zoomOut(mySvgElement, zoomStepValue, initialViewBoxDimension)
   })
 
