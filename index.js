@@ -1,9 +1,20 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-// Clear the existing HTML content
-document.body.innerHTML = '<div id="app"></div>';
 
-// Render your React component instead
-const root = createRoot(document.getElementById('app'));
-root.render(<h1>Hello, world</h1>);
+const ZoomableVisualisation = () => {
+  // TODO: Actually implement a navigation bar
+  return (
+    <>
+      <h1>Hello from React!</h1>
+      <div id="my-svg-container"></div>
+    </>
+  )
+}
+
+const domNode = document.getElementById('zoomable-visualisation')
+const root2 = createRoot(domNode)
+root2.render(<ZoomableVisualisation />)
+
+
+
