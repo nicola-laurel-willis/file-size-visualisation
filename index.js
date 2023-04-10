@@ -1,14 +1,59 @@
 import { zoomIn, zoomOut } from "./zoom.js"
 import { getSvgElement } from "./utilities.js"
-
 import { SVG, extend as SVGextend, Element as SVGElement } from '@svgdotjs/svg.js'
 
-var draw = SVG().addTo('#js-svg').size(400, 400)
-draw.rect(100, 100).fill('#f06').move(100, 50)
+const gridRoot = 4
+const gridSize = 400
+
+const gridSquareEdgeLength = gridSize/gridRoot
+
+{/* <rect x="0" y="0" width="1000000" height="1000000" stroke="black" fill="yellow" stroke-width="0.5"/>
+<rect x="0" y="0" width="1000" height="1000" stroke="black" fill="pink" stroke-width="0"/>
+<rect x="0" y="0" width="1" height="1" stroke="black" fill="blue" stroke-width="0.02"/> */}
+
+
+const mySVG = SVG()
+.addTo('#my-svg')
+.size(600, 600)
+.viewbox(0, 0, 0.1, 0.1)
+.attr({"style": "border: 1px solid black"})
+
+mySVG
+.rect(1000, 1000)
+//.stroke({ color: "hotpink", opacity: 0.4, width: 0.1})
+.fill("rgba(245, 40, 145, 0.1)")
+
+mySVG
+.rect(1, 1)
+//.stroke({ color: "hotpink", opacity: 0.4, width: 0.001})
+.fill("rgba(245, 40, 145, 0.3)")
+
+mySVG
+.rect(0.01, 0.01)
+//.stroke({ color: "hotpink", opacity: 0.4, width: 0.000001})
+.fill("rgba(245, 40, 145, 0.5)")
+
+// const mySVGFromDOM = 
+
+
+const squareLength = 0.01/10
+
+
+const createSvgGridSquare = (rowPosition, colPosition) => {
+  //const group = draw.group().addClass("draw-block")
+  console.log('create svg grid square')
+  const strokeWidth = 0.01/100
+
+  mySVG
+  .rect(squareLength, squareLength)
+  .stroke({ color: "black", opacity: 0.4, width: strokeWidth})
+  .fill("rgba(245, 40, 145, 0)")
+  .move(rowPosition, colPosition)
+}
 
 const generateGrid = () => {
   const values = []
-  for (let value = 1; value <= 4; value++) {
+  for (let value = 1; value <= 10; value++) {
     values.push(value)
   }
 
@@ -24,29 +69,23 @@ const generateGrid = () => {
   })
   .flat(1)
 
-  console.log("coordinates", coordinates)
-
-  const gridSize = 400
-  const gridSquareEdgeLength = gridSize/values.length
-  console.log("gridSquareEdgeLength", gridSquareEdgeLength)
-
   const positions = coordinates.map(({row, col}) => {
     return ({
-      rowPosition: (row - 1) * gridSquareEdgeLength,
-      colPosition: (col - 1) * gridSquareEdgeLength
+      rowPosition: (row - 1) * squareLength,
+      colPosition: (col - 1) * squareLength
     })
   })
-  console.log("positions", positions)
 
   positions.forEach(({rowPosition, colPosition}) => {
-    const group = draw.group().addClass("draw-block");
-  
-    // Draw Block
-    group.rect(gridSquareEdgeLength, gridSquareEdgeLength).fill("white").stroke("black").move(rowPosition, colPosition);
+    createSvgGridSquare(rowPosition, colPosition)
   })
-
 }
+
+
 window.onload = generateGrid
+
+
+
 
 
 
@@ -56,7 +95,6 @@ const zoomStepValue = 100
 // ********Zoom SVG********
 window.addEventListener("load", () => {
   const experimentSvgElement = getSvgElement("experiment-svg-object", "experiment-svg-element")
-  console.log('experimentSvgElement', experimentSvgElement)
   const zoomInButton = document.getElementById("zoom-in")
   const resetButton = document.getElementById("reset")
   const zoomOutButton = document.getElementById("zoom-out")
