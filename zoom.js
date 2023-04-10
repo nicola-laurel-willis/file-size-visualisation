@@ -4,7 +4,10 @@
 const getCurrentViewBoxDimension = element => {
   const viewBox = element.getAttribute("viewBox")
   const dimensionString = viewBox.substring(4)
-  return dimensionString.split(" ")[0]
+  console.log('**dimensionString', dimensionString)
+  const currentDimension = parseInt(dimensionString.split(" ")[0])
+  console.log('**currentDimension', currentDimension)
+  return currentDimension
 }
 
 
@@ -13,13 +16,13 @@ const increaseViewBoxDimension = (currentViewBoxDimension, zoomStepValue) => cur
 const decreaseViewBoxDimension = (currentViewBoxDimension, zoomStepValue) => currentViewBoxDimension - zoomStepValue
 
 const zoom = getNewViewBoxDimension => (svgElement, zoomStepValue, initialViewBoxDimension) => {
-  console.log("svg element", svgElement)
+  //console.log("svg element", svgElement)
   const currentViewBoxDimension = getCurrentViewBoxDimension(svgElement)
   console.log("currentViewBoxDimension", currentViewBoxDimension)
 
   const newViewBoxDimension = getNewViewBoxDimension(currentViewBoxDimension, zoomStepValue)
+  console.log('newViewBoxDimension', newViewBoxDimension)
 
-  console.log("newViewBoxDimension", newViewBoxDimension)
   if(newViewBoxDimension < 0){
     svgElement.setAttribute("viewBox", "0 0 1 1")
   }
