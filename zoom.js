@@ -13,6 +13,7 @@ const increaseViewBoxDimension = (currentViewBoxDimension, zoomStepValue) => cur
 const decreaseViewBoxDimension = (currentViewBoxDimension, zoomStepValue) => currentViewBoxDimension - zoomStepValue
 
 const zoom = getNewViewBoxDimension => (svgElement, zoomStepValue, initialViewBoxDimension) => {
+  console.log("svg element", svgElement)
   const currentViewBoxDimension = getCurrentViewBoxDimension(svgElement)
   console.log("currentViewBoxDimension", currentViewBoxDimension)
 
