@@ -29135,16 +29135,31 @@
 
   // index.js
   window.onload = buildSVG();
-  var ZoomableVisualisation = () => {
+  var Error2 = ({ zoomError }) => {
+    console.log("error running");
+    console.log("zoomError", zoomError);
+    if (zoomError.zoomIn) {
+      return /* @__PURE__ */ import_react.default.createElement("span", null, " Can't zoom in any further ");
+    }
+    if (zoomError.zoomOut) {
+      console.log("this is running!");
+      return /* @__PURE__ */ import_react.default.createElement("span", null, " Can't zoom out any further ");
+    }
+    return null;
+  };
+  var ZoomableSVG = () => {
     const [viewBoxDimension, setViewBoxDimension] = (0, import_react2.useState)(initialViewBoxDimension);
     const zoomStepAmount = viewBoxDimension / 12;
+    const [zoomError, setZoomError] = (0, import_react2.useState)({ zoomIn: false, zoomOut: false });
+    console.log("zoomError", zoomError);
     const zoomIn = () => {
       const newViewBoxDimension = viewBoxDimension - zoomStepAmount;
       if (newViewBoxDimension >= 1) {
         setViewBoxDimension(newViewBoxDimension);
         updateSVG(newViewBoxDimension);
+        setZoomError({ zoomIn: false, zoomOut: false });
       } else {
-        console.log("Can't zoom in any more than this!");
+        setZoomError({ zoomIn: true, zoomOut: false });
       }
     };
     const zoomOut = () => {
@@ -29152,19 +29167,21 @@
       if (newViewBoxDimension <= largestViewBoxDimension) {
         setViewBoxDimension(newViewBoxDimension);
         updateSVG(newViewBoxDimension);
+        setZoomError({ zoomIn: false, zoomOut: false });
       } else {
-        console.log("Can't zoom out any more than this!");
+        setZoomError({ zoomIn: false, zoomOut: true });
       }
     };
     const reset = () => {
       setViewBoxDimension(initialViewBoxDimension);
       updateSVG(initialViewBoxDimension);
+      setZoomError({ zoomIn: false, zoomOut: false });
     };
-    return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("button", { type: "button", id: "zoom-in", onClick: zoomIn }, "Zoom in"), /* @__PURE__ */ import_react.default.createElement("button", { type: "button", id: "zoom-out", onClick: zoomOut }, "Zoom out"), /* @__PURE__ */ import_react.default.createElement("button", { type: "button", id: "reset", onClick: reset }, "Reset"));
+    return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("button", { type: "button", id: "zoom-in", onClick: zoomIn }, "Zoom in"), /* @__PURE__ */ import_react.default.createElement("button", { type: "button", id: "zoom-out", onClick: zoomOut }, "Zoom out"), /* @__PURE__ */ import_react.default.createElement("button", { type: "button", id: "reset", onClick: reset }, "Reset"), /* @__PURE__ */ import_react.default.createElement(Error2, { zoomError }));
   };
-  var domNode = document.getElementById("zoomable-visualisation");
+  var domNode = document.getElementById("zoomable-SVG");
   var root2 = (0, import_client.createRoot)(domNode);
-  root2.render(/* @__PURE__ */ import_react.default.createElement(ZoomableVisualisation, null));
+  root2.render(/* @__PURE__ */ import_react.default.createElement(ZoomableSVG, null));
 })();
 /*! Bundled license information:
 

@@ -6,6 +6,19 @@ import { buildSVG, updateSVG, initialViewBoxDimension, largestViewBoxDimension }
 
 window.onload = buildSVG()
 
+const Error = ({ zoomError }) => {
+  console.log("error running")
+  console.log('zoomError', zoomError)
+  if(zoomError.zoomIn){
+    return <span> Can't zoom in any further </span>
+  }
+  if (zoomError.zoomOut){
+    console.log('this is running!')
+    return <span> Can't zoom out any further </span>
+  }
+  return null
+}
+
 const ZoomableSVG = () => {
 
   const [viewBoxDimension, setViewBoxDimension] = useState(initialViewBoxDimension)
@@ -49,12 +62,7 @@ const ZoomableSVG = () => {
       <button type="button" id="zoom-out" onClick={zoomOut}>Zoom out</button>
       <button type="button" id="reset" onClick={reset}>Reset</button>
 
-      {
-        zoomError.zoomIn ? <span> Can't zoom in any further </span> : null
-      }
-      {
-        zoomError.zoomOut ? <span> Can't zoom out any further </span> : null
-      }
+      <Error zoomError={ zoomError } />
       
     </>
   )
