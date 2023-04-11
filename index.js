@@ -6,54 +6,62 @@ import { buildSVG, updateSVG, initialViewBoxDimension, largestViewBoxDimension }
 
 window.onload = buildSVG()
 
-const Error = ({ zoomError }) => {
-  console.log("error running")
-  console.log('zoomError', zoomError)
-  if(zoomError.zoomIn){
+const Error = ({ zoomInError, zoomOutError }) => {
+  console.log("Error running")
+  console.log('zoomInError in Error', zoomInError)
+  console.log('zoomOutError in Error', zoomOutError)
+  if(zoomInError){
     return <span> Can't zoom in any further </span>
   }
-  if (zoomError.zoomOut){
+  if (zoomOutError){
     console.log('this is running!')
     return <span> Can't zoom out any further </span>
   }
   return null
 }
 
+const zoomOutIsTooFar = (newViewBoxDimension) => newViewBoxDimension > largestViewBoxDimension
+const zoomInIsTooFar = (newViewBoxDimension) => newViewBoxDimension <= 1
+
 const ZoomableSVG = () => {
 
   const [viewBoxDimension, setViewBoxDimension] = useState(initialViewBoxDimension)
   const zoomStepAmount = viewBoxDimension/12
 
-  const [zoomError, setZoomError] = useState({ zoomIn: false, zoomOut: false })
+  const [ zoomInError, setZoomInError ] = useState(false)
+  const [ zoomOutError, setZoomOutError ] = useState(false)
+
+
+  const newZoomedInViewBoxDimension = viewBoxDimension - zoomStepAmount
+  const newZoomedOutViewBoxDimension = viewBoxDimension + zoomStepAmount
 
   const zoomIn = () => {
-    const newViewBoxDimension = viewBoxDimension - zoomStepAmount
-    if(newViewBoxDimension >= 1){
-      setViewBoxDimension(newViewBoxDimension)
-      updateSVG(newViewBoxDimension)
-      setZoomError({ zoomIn: false, zoomOut: false })
+    if(zoomInIsTooFar(newZoomedInViewBoxDimension)){
+      setZoomInError(true)
     }
     else {
-      setZoomError({ zoomIn: true, zoomOut: false })
+      setViewBoxDimension(newZoomedInViewBoxDimension)
+      updateSVG(newZoomedInViewBoxDimension)
+      zoomInError && setZoomInError(false)
     }
   }
 
   const zoomOut = () => {
-    const newViewBoxDimension = viewBoxDimension + zoomStepAmount
-    if(newViewBoxDimension <= largestViewBoxDimension){
-      setViewBoxDimension(newViewBoxDimension)
-      updateSVG(newViewBoxDimension)
-      setZoomError({ zoomIn: false, zoomOut: false })
+    if(zoomOutIsTooFar(newZoomedOutViewBoxDimension)){
+      setZoomOutError(true)
     }
     else {
-      setZoomError({ zoomIn: false, zoomOut: true })
+      setViewBoxDimension(newZoomedOutViewBoxDimension)
+      updateSVG(newZoomedOutViewBoxDimension)
+      zoomOutError && setZoomOutError(false)
     }
   }
 
   const reset = () => {
     setViewBoxDimension(initialViewBoxDimension)
     updateSVG(initialViewBoxDimension)
-    setZoomError({ zoomIn: false, zoomOut: false })
+    zoomInError && setZoomInError(false)
+    zoomOutError && setZoomOutError(false)
   }
 
   return (
@@ -62,7 +70,7 @@ const ZoomableSVG = () => {
       <button type="button" id="zoom-out" onClick={zoomOut}>Zoom out</button>
       <button type="button" id="reset" onClick={reset}>Reset</button>
 
-      <Error zoomError={ zoomError } />
+      <Error zoomInError={ zoomInError } zoomOutError={ zoomOutError }/>
       
     </>
   )
