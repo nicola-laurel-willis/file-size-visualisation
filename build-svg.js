@@ -1,6 +1,6 @@
 import { SVG } from '@svgdotjs/svg.js'
 
-export const initialViewBoxDimension = 34000
+export const initialViewBoxDimension = 35000
 export const largestViewBoxDimension = 35000
 
 const byte = 1

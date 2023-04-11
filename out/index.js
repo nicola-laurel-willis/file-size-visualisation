@@ -29095,7 +29095,7 @@
   makeMorphable();
 
   // build-svg.js
-  var initialViewBoxDimension = 34e3;
+  var initialViewBoxDimension = 35e3;
   var largestViewBoxDimension = 35e3;
   var byte = 1;
   var kilobyte = 1e3;
@@ -29140,13 +29140,21 @@
     const zoomStepAmount = viewBoxDimension / 12;
     const zoomIn = () => {
       const newViewBoxDimension = viewBoxDimension - zoomStepAmount;
-      setViewBoxDimension(newViewBoxDimension);
-      updateSVG(newViewBoxDimension);
+      if (newViewBoxDimension >= 1) {
+        setViewBoxDimension(newViewBoxDimension);
+        updateSVG(newViewBoxDimension);
+      } else {
+        console.log("Can't zoom in any more than this!");
+      }
     };
     const zoomOut = () => {
       const newViewBoxDimension = viewBoxDimension + zoomStepAmount;
-      setViewBoxDimension(newViewBoxDimension);
-      updateSVG(newViewBoxDimension);
+      if (newViewBoxDimension <= largestViewBoxDimension) {
+        setViewBoxDimension(newViewBoxDimension);
+        updateSVG(newViewBoxDimension);
+      } else {
+        console.log("Can't zoom out any more than this!");
+      }
     };
     const reset = () => {
       setViewBoxDimension(initialViewBoxDimension);

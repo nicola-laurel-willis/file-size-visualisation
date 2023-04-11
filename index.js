@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from "react"
 import { createRoot } from 'react-dom/client'
 
-import { buildSVG, updateSVG, initialViewBoxDimension } from "./build-svg.js"
+import { buildSVG, updateSVG, initialViewBoxDimension, largestViewBoxDimension } from "./build-svg.js"
 
 window.onload = buildSVG()
 
@@ -12,16 +12,35 @@ const ZoomableVisualisation = () => {
   const zoomStepAmount = viewBoxDimension/12
 
 
+
+  //use viewBoxDimension to detect 
+
+
   const zoomIn = () => {
+    //if newViewBoxDimension is greater than or equal to 1
+    //then set it as new state and update the svg
+    //if newViewBoxDimension is less than 1
+    //then set the state with the same viewBox dimension as before
+
     const newViewBoxDimension = viewBoxDimension - zoomStepAmount
-    setViewBoxDimension(newViewBoxDimension)
-    updateSVG(newViewBoxDimension)
+    if(newViewBoxDimension >= 1){
+      setViewBoxDimension(newViewBoxDimension)
+      updateSVG(newViewBoxDimension)
+    }
+    else {
+      console.log("Can't zoom in any more than this!")
+    }
   }
 
   const zoomOut = () => {
     const newViewBoxDimension = viewBoxDimension + zoomStepAmount
-    setViewBoxDimension(newViewBoxDimension)
-    updateSVG(newViewBoxDimension)
+    if(newViewBoxDimension <= largestViewBoxDimension){
+      setViewBoxDimension(newViewBoxDimension)
+      updateSVG(newViewBoxDimension)
+    }
+    else {
+      console.log("Can't zoom out any more than this!")
+    }
   }
 
   const reset = () => {
