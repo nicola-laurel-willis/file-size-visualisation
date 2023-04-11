@@ -6,6 +6,6 @@
     "react-dom": "^18.2.0"
   },
   "scripts": {
-    "build": "esbuild index.js svg-generating.js --bundle --outdir=out --loader:.js=jsx"
+    "build": "esbuild index.js --bundle --outdir=out --loader:.js=jsx"
   }
 }
