@@ -2,7 +2,7 @@
 
 # Try it out
 
-https://nicola-laurel-willis.github.io/file-size-visualisation/ Here is the project in its current state (unfinished!). The yellow box represents a gigagbyte, 
+https://nicola-laurel-willis.github.io/file-size-visualisation/ Here is the project in its current state (unfinished!). The yellow box represents a gigabyte, then blue, pink, cyan for mb, kb, b. 
 
 # About the project
 
