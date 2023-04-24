@@ -24,8 +24,10 @@ I've also been thinking about how to generate the grids in my visualisation. Wit
 
 # Good technologies for creating visualisations that zoom
 
-d3.js seems like a great solution. I discovered it part way through working on this project, but I wanted to continue without it for now because I wanted to be able to show off the hard work I'd put in to try to figure out how to do it on my own!
+d3.js seems perfect for something like this. I discovered it part way through working on this project, but I wanted to continue without it for now because I wanted to be able to show off the hard work I'd put in to try to figure out how to do it on my own.
 
 Here is a good example of an infinite zoomable SVG grid pattern made using d3: https://observablehq.com/@martin-pi/zoomable-pannable-svg-grid-patterns
+
+Here is a Javascript library for zooming and panning on SVGs: https://github.com/bumbu/svg-pan-zoom 
 
 
