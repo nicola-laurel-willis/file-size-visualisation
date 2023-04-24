@@ -10,17 +10,19 @@ It surprised me just how big the difference in size is between say a 15 kb word 
 
 Building this project has thrown up lots of interesting challenges for me technically, including understanding viewbox and viewport on SVGs, and learning how to use the new React after not using React for over 2 years. I am gradually returning to web development after a long break and initially I felt very rusty, although things began flowing easily again after not too long.
 
-Other challenges included figuring out how to view my work locally while working. In the end I used vscode-preview-server which has worked great. I also had to figure out how to use es6 javascript modules with my html - I used esbuild. This stuff might sound really basic, but I have been used to using tools like React where all of this comes included. When I was working as a developer for a company, all of this stuff was set up in the codebase from the beginning, and I'd never had to set up a project from fresh in this way.
+Other challenges included figuring out how to view my work locally while working. In the end I used vscode-preview-server which has worked well. I also had to figure out how to use es6 javascript modules with my html - I used esbuild. This stuff might sound really basic, but I have been used to using tools like React where all of this comes included. When I was working as a developer for a company, all of this stuff was set up in the codebase from the beginning, and I'd never had to set up a project from fresh in this way.
 
-I used vectr.com near the beginning to experiment with making SVGs and to try to understand how they were working. I later switched from trying to understand how to work with SVG code directly to generating SVGs using SVG.js library, which I found really helpful because learning how to write SVGs from scratch was just taking too much time and I had too many other things to think about.
+I used vectr.com near the beginning to experiment with making SVGs and to try to understand how they were working. I later switched from trying to understand how to work with SVG code directly to generating SVGs using the SVG.js library.
 
 I found this stackoverflow thread helpful when trying to figure out how I might zoom in on an SVG: https://stackoverflow.com/questions/52576376/how-to-zoom-in-on-a-complex-svg-structure. It pointed me to this codepen https://codepen.io/yoksel/pen/yobqYY which demonstrated really clearly how viewbox works and how it can allow you to "zoom".
 
 # Next steps
 
-I'm currently working on allowing the user to zoom by pressing and holding the button. I found this https://dirask.com/posts/React-mouse-button-press-and-hold-example-pzrAap really helpful to point me to the way one might do this, and I'm currently getting a deeper understanding of using the React useEffect and useRef hooks and thinking through how it works.
+- I'm currently working on allowing the user to zoom by pressing and holding the button. I found this https://dirask.com/posts/React-mouse-button-press-and-hold-example-pzrAap really helpful to point me to the way one might do this, and I'm currently getting a deeper understanding of using the React useEffect and useRef hooks and thinking through how it works.
 
-I've also been thinking about how to generate the grids in my visualisation. With the project in its current state, the grid lines are generated once at the beginning. Because of the huge differences in scale as you zoom in, your very thin gridlines representing gigabyte-scales get HUGE when you zoom in to the kilobyte and byte levels. I'm thinking about generating gridlines dynamically as part of the zooming mechanism.
+- I've also been thinking about how to generate the grids in my visualisation. With the project in its current state, the grid lines are generated once at the beginning. Because of the huge differences in scale as you zoom in, your very thin gridlines representing gigabyte-scales get HUGE when you zoom in to the kilobyte and byte levels. I'm thinking about generating gridlines dynamically as part of the zooming mechanism.
+
+- Fixing the issue with the error message when you zoom in or out too far - currently the error message sticks around after you start to zoom back in or out within the acceptable bounds of the zoom. So this needs to be thought through.
 
 # Good technologies for creating visualisations that zoom
 
