@@ -4,9 +4,7 @@ A project to visualise the differences in scale between bytes, kilobytes, megaby
 
 It surprised me just how big the difference in size is between say a 15 kb word document and a 1.2 mb JPEG image. The difference was truly massive. Doing this project has really given me a new sense of how much space different files in my computer are. It has certainly made me view those 1.28 gb psd files in my art folder in a whole new light!
 
-The initial spark that started this project wasn't actually really understanding the immensity of the differences in scale - that was something I only discovered after I made it. What started it was my frustration at never remembering which was bigger, which order they came in - kb, mb, gb? I thought it would be useful to me and many other people to have a tool they could use to see them visually.
-
-Building this project has thrown up lots of interesting challenges for me technically, including understanding viewbox and viewport on SVGs, and learning how to use the new React after not using it for over 2 years.
+Building this project has thrown up lots of interesting challenges for me technically, including understanding viewbox and viewport on SVGs, and learning how to use the new React after not using it for over 2 years, and many many more. I am gradually returning to web development after a long break and it's amazing how rusty you can get. And there were things I'd never learned back when I was doing web development work regularly, too. Such challenges included figuring out how to view my work locally while I was working (In the end I used vscode-preview-server). I also had to figure out how to use es6 javascript modules with my html - I used esbuild.
 
 I used vectr.com near the beginning to experiment with making SVGs and to try to understand how they were working. I later switched from trying to understand how to work with SVG code directly to generating SVGs using SVG.js library, which I found really helpful because learning how to write SVGs from scratch was just taking too much time and I had too many other things to think about.
 
