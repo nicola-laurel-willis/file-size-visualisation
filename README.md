@@ -1,10 +1,16 @@
 # file-size-visualisation
 
+# About the project
+
 A project to visualise the differences in scale between bytes, kilobytes, megabytes and gigabytes, while also giving me an opportunity to refresh my coding skills.
 
 It surprised me just how big the difference in size is between say a 15 kb word document and a 1.2 mb JPEG image. The difference was truly massive. Doing this project has really given me a new sense of how much space different files in my computer are. It has certainly made me view those 1.28 gb psd files in my art folder in a whole new light!
 
-Building this project has thrown up lots of interesting challenges for me technically, including understanding viewbox and viewport on SVGs, and learning how to use the new React after not using it for over 2 years, and many many more. I am gradually returning to web development after a long break and it's amazing how rusty you can get. And there were things I'd never learned back when I was doing web development work regularly, too. Such challenges included figuring out how to view my work locally while I was working (In the end I used vscode-preview-server). I also had to figure out how to use es6 javascript modules with my html - I used esbuild.
+# Technical learnings
+
+Building this project has thrown up lots of interesting challenges for me technically, including understanding viewbox and viewport on SVGs, and learning how to use the new React after not using React for over 2 years. I am gradually returning to web development after a long break and initially I felt very rusty, although things began flowing easily again after not too long.
+
+Other challenges included figuring out how to view my work locally while working. In the end I used vscode-preview-server which has worked great. I also had to figure out how to use es6 javascript modules with my html - I used esbuild. This stuff might sound really basic, but I have been used to using tools like React where all of this comes included. When I was working as a developer for a company, all of this stuff was set up in the codebase from the beginning, and I'd never had to set up a project from fresh in this way.
 
 I used vectr.com near the beginning to experiment with making SVGs and to try to understand how they were working. I later switched from trying to understand how to work with SVG code directly to generating SVGs using SVG.js library, which I found really helpful because learning how to write SVGs from scratch was just taking too much time and I had too many other things to think about.
 
